@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.duan.myuilibrarytest.activity.TestActivity">
+
+    <Button
+        android:onClick="btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start"/>
+
+    <Button
+        android:onClick="btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop"/>
+
+
+    <com.test.duan.myuilibrarytest.view.GHCLoadAnim
+        android:id="@+id/ghcloadanim"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.test.duan.myuilibrarytest.view.GHCLoadAnim>
+
+    <EditText
+        android:id="@+id/edittext_test"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <AutoCompleteTextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/antucompletetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

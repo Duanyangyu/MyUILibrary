@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.test.duan.myuilibrarytest.view.ViewGroupTest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_motion"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.duan.myuilibrarytest.activity.MotionActivity">
+
+    <com.test.duan.myuilibrarytest.view.ViewTest
+
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/icon_motion_test"
+        />
+
+
+</com.test.duan.myuilibrarytest.view.ViewGroupTest>

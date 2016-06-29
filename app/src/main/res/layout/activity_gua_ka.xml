@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_gua_ka"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.duan.myuilibrarytest.activity.GuaKaActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <com.test.duan.myuilibrarytest.view.GuaGuaKaView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="240dp"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_gua_ka"
+        tools:layout_constraintLeft_creator="0"
+        app:layout_constraintTop_toTopOf="@+id/activity_gua_ka"
+        tools:layout_constraintTop_creator="0"
+        app:layout_constraintRight_toRightOf="@+id/activity_gua_ka"
+        tools:layout_constraintRight_creator="0"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_gua_ka"
+        tools:layout_constraintBottom_creator="0" />
+
+</android.support.constraint.ConstraintLayout>

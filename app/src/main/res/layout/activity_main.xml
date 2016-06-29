@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.duan.myuilibrarytest.MainActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Material Calendar View "/>
+
+            <Button
+                android:id="@+id/btn_showsnackbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show SnackBar"/>
+
+            <Button
+                android:id="@+id/btn_gradView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DragGridView"/>
+
+            <Button
+                android:id="@+id/btn_gradList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DragListView"/>
+
+            <Button
+                android:id="@+id/btn_circle_anim"
+                android:text="CIRCLE ANIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_circle_menu"
+                android:text="CIRCLE MENU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_folding_Cell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Folding Cell"/>
+
+            <Button
+                android:id="@+id/btn_flexbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FelxboxLayout"/>
+
+            <Button
+                android:id="@+id/btn_coordinator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CoordinatorLayout"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_scrll_demo"
+                android:text="SCROLL DEMO"/>
+
+            <Button
+                android:id="@+id/btn_guaguaka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="刮刮卡"/>
+
+            <Button
+                android:id="@+id/btn_anim_test"
+                android:text="动画插值测试"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_test"
+                android:text="TEST"/>
+
+
+            <Button
+                android:id="@+id/btn_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="语音录制"/>
+
+            <Button
+                android:id="@+id/btn_motion_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="事件处理"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ramotion.foldingcell.FoldingCell
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/folding_cell"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        folding-cell:animationDuration="1000"
+        folding-cell:backSideColor="#e4e2e2"
+        folding-cell:additionalFlipsCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <FrameLayout
+            android:id="@+id/cell_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:visibility="gone">
+
+            <android.support.v7.widget.CardView
+                folding-cell:cardElevation="20dp"
+                folding-cell:cardCornerRadius="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/view_share_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="#F00"/>
+
+                    <com.test.duan.myuilibrarytest.view.CircleImageView
+                        android:id="@+id/iv_doc_avatar_2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/icon_defalt"/>
+
+                    <LinearLayout
+                        android:layout_below="@+id/iv_doc_avatar_2"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="doctor name"/>
+
+                        <com.test.duan.myuilibrarytest.view.StarView
+                            android:id="@+id/starview_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="知名专家 呼吸内科"/>
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="北京协和医院"/>
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="医生擅长： 肿瘤、胃病、肾病、内分泌、神经外科、癌症等疑难不治之症"/>
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="医生简介： 肿瘤、胃病、肾病、内分泌、神经外科、癌症等疑难不治之症"/>
+
+                        <Button
+                            android:id="@+id/btn_jump"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/shape_btn_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="查看详情"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </FrameLayout>
+        ​
+        <FrameLayout
+            android:id="@+id/cell_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <android.support.v7.widget.CardView
+                folding-cell:cardElevation="20dp"
+                folding-cell:cardCornerRadius="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF">
+
+                    <ImageView
+                        android:layout_width="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_height="100dp"
+                        android:src="#F00"/>
+
+                    <com.test.duan.myuilibrarytest.view.CircleImageView
+                        android:id="@+id/iv_doc_avatar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:src="@mipmap/icon_defalt"/>
+
+                    <LinearLayout
+                        android:id="@+id/temp_line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/iv_doc_avatar"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_doc_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="doctor name"/>
+                        <TextView
+                            android:id="@+id/tv_doc_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="doctor message"/>
+
+                    </LinearLayout>
+
+                    <com.test.duan.myuilibrarytest.view.StarView
+                        android:id="@+id/starview_1"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </com.test.duan.myuilibrarytest.view.StarView>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+    </com.ramotion.foldingcell.FoldingCell>
+
+</LinearLayout>

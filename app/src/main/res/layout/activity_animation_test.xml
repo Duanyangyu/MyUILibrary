@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_animation_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.duan.myuilibrarytest.activity.AnimationTestAct"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:text="移动动画"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:id="@+id/button"
+        android:background="@drawable/shape_circle"
+        app:layout_constraintLeft_toRightOf="@+id/button2"
+        android:layout_marginStart="56dp"
+        tools:layout_constraintLeft_creator="0"
+        app:layout_constraintTop_toTopOf="@+id/activity_animation_test"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintTop_creator="0" />
+
+    <Button
+        android:text="移动"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:id="@+id/button2"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_animation_test"
+        tools:layout_constraintLeft_creator="0"
+        app:layout_constraintTop_toTopOf="@+id/activity_animation_test"
+        android:layout_marginTop="8dp"
+        tools:layout_constraintTop_creator="0" />
+
+    <Button
+        android:text="旋转"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="72dp"
+        android:id="@+id/button3"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_animation_test"
+        tools:layout_constraintLeft_creator="0"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_constraintTop_creator="0"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        tools:layout_constraintBottom_creator="0" />
+
+    <Button
+        android:text="旋转动画"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="279dp"
+        android:id="@+id/button4"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_animation_test"
+        tools:layout_constraintLeft_creator="0"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_constraintTop_creator="0"
+        app:layout_constraintRight_toRightOf="@+id/activity_animation_test"
+        tools:layout_constraintRight_creator="0"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_animation_test"
+        tools:layout_constraintBottom_creator="0" />
+
+</android.support.constraint.ConstraintLayout>
