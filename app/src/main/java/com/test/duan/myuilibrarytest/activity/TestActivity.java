@@ -1,9 +1,14 @@
 package com.test.duan.myuilibrarytest.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +18,7 @@ import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.test.duan.myuilibrarytest.R;
 import com.test.duan.myuilibrarytest.view.GHCLoadAnim;
@@ -63,4 +69,16 @@ public class TestActivity extends AppCompatActivity {
         ghcLoadAnim.stop();
     }
 
+    public void testSpannableString(View view) {
+        TextView textView = (TextView) findViewById(R.id.textview_test);
+        if (TextUtils.isEmpty(textView.getText())){
+            SpannableString spannableString = new SpannableString("1234567890");
+            spannableString.setSpan(new ForegroundColorSpan(Color.BLUE),5, spannableString.length(),
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            textView.setText(spannableString);
+        }else {
+            textView.setText("");
+        }
+
+    }
 }
