@@ -11,6 +11,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <com.test.duan.myuilibrarytest.view.GuaGuaKaView
+        android:id="@+id/guaguaka"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         tools:layout_editor_absoluteX="142dp"

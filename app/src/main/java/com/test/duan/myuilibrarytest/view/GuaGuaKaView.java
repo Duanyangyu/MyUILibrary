@@ -9,7 +9,10 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -29,7 +32,17 @@ public class GuaGuaKaView extends View {
     private int mLastX;
     private int mLastY;
 
+    private String mText;
+
+    private volatile boolean mComplete = false;
+
     private Bitmap bitmapContent;
+
+    public OnGuaGuaKaCompleteListener mListener;
+
+    public interface OnGuaGuaKaCompleteListener{
+        void complete();
+    }
 
     public GuaGuaKaView(Context context) {
         this(context,null);
@@ -42,6 +55,19 @@ public class GuaGuaKaView extends View {
     public GuaGuaKaView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed,l,t,r,b);
+    }
+
+    public void setOnGuaGuaKaCompleteListener(OnGuaGuaKaCompleteListener mListener) {
+        this.mListener = mListener;
+    }
+
+    public void setText(String text) {
+        this.mText = text;
     }
 
     private void init(){
@@ -67,30 +93,58 @@ public class GuaGuaKaView extends View {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        mBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.outWidth = width;
+        options.outHeight = height;
+        mBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.icon_guaka_mengban, options).copy(Bitmap.Config.ARGB_8888, true);
         mCanvas = new Canvas(mBitmap);
-        mCanvas.drawColor(Color.parseColor("#354a6c"));
+
+        if (!TextUtils.isEmpty(mText)){
+            drawText(mText,mCanvas);
+        }
+
         setUpPaint();
     }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-
+    private void drawText(String text,Canvas canvas){
+        Paint mPaint = new Paint();
+        mPaint.setStrokeWidth(3);
+        mPaint.setTextSize(40);
+        mPaint.setColor(Color.WHITE);
+        mPaint.setTextAlign(Paint.Align.LEFT);
+        Rect bounds = new Rect();
+        mPaint.getTextBounds(text, 0, text.length(), bounds);
+        Paint.FontMetricsInt fontMetrics = mPaint.getFontMetricsInt();
+        int baseline = (getMeasuredHeight() - fontMetrics.bottom + fontMetrics.top) / 2 - fontMetrics.top;
+        canvas.drawText(text,getMeasuredWidth() / 2 - bounds.width() / 2, baseline, mPaint);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(bitmapContent,0,0,null);
-        drawPath();
-        canvas.drawBitmap(mBitmap,0,0,null);
+
+        if (mComplete && mListener != null){
+            mListener.complete();
+        }
+
+        if (!mComplete){
+            drawPath();
+            canvas.drawBitmap(mBitmap,0,0,null);
+        }
+
     }
 
     private void drawPath(){
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
         mCanvas.drawPath(mPath,mPaint);
     }
+
+
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -108,11 +162,20 @@ public class GuaGuaKaView extends View {
                 mPath.moveTo(mLastX,mLastY);
                 break;
             case MotionEvent.ACTION_MOVE:
+
+                if (Math.abs(x-mLastX ) < Math.abs(y-mLastY)){
+                    return false;
+                }
+
+                getParent().requestDisallowInterceptTouchEvent(true);
+
                 mPath.lineTo(x,y);
                 mLastX = x;
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
+
+                new Thread(mRunnable ).start();
 
                 break;
             default:
@@ -126,8 +189,8 @@ public class GuaGuaKaView extends View {
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
-            int w = getWidth();
-            int h = getHeight();
+            int w = mCanvas.getWidth();
+            int h = mCanvas.getHeight();
             float wipeArea = 0;
             float tatalArea = w * h;
 
@@ -136,15 +199,23 @@ public class GuaGuaKaView extends View {
 
             for (int i = 0; i < w; i++) {
                 for (int j = 0; j < h; j++) {
-                    int index = i*w+j;
+                    int index = i+j*w;
                     if (pixels[index] == 0){
                         wipeArea ++;
                     }
                 }
             }
 
+            if (wipeArea > 0 && tatalArea > 0){
 
-
+                int percent = (int)(wipeArea *100/ tatalArea);
+                Log.d("percent",":   "+percent);
+                if (percent > 40){
+                    //达到阈值，清除图层区域
+                    mComplete = true;
+                    postInvalidate();
+                }
+            }
 
         }
     };

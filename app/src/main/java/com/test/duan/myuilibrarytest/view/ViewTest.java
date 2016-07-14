@@ -72,9 +72,9 @@ public class ViewTest extends ImageView {
 
                 }
                 //利用Scroller实现平滑移动
-//                smoothScrollTo(x,y);
+                smoothScrollTo(x,y);
 
-                ObjectAnimator.ofFloat(this,"translationX",mLastX,x).setDuration(1000).start();
+//                ObjectAnimator.ofFloat(this,"translationX",mLastX,x).setDuration(1000).start();
                 mLastX = x;
 
                 consume = true;

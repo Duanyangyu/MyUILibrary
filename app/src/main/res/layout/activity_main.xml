@@ -87,6 +87,12 @@
                 android:text="刮刮卡"/>
 
             <Button
+                android:id="@+id/btn_guaguaka_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="刮刮卡列表"/>
+
+            <Button
                 android:id="@+id/btn_anim_test"
                 android:text="动画插值测试"
                 android:layout_width="wrap_content"
@@ -110,6 +116,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="事件处理"/>
+
+            <Button
+                android:id="@+id/btn_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="表情"/>
 
         </LinearLayout>
 
