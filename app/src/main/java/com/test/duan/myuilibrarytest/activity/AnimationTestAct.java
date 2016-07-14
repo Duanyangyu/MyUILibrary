@@ -21,6 +21,7 @@ public class AnimationTestAct extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.button).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
+
     }
 
     private void animCreater() {
