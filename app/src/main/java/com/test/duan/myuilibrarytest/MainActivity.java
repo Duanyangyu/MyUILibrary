@@ -24,7 +24,9 @@ import com.test.duan.myuilibrarytest.activity.GradListActivity;
 import com.test.duan.myuilibrarytest.activity.GridViewActivity;
 import com.test.duan.myuilibrarytest.activity.GuaKaActivity;
 import com.test.duan.myuilibrarytest.activity.GuaKaListActivity;
+import com.test.duan.myuilibrarytest.activity.MiaoJieActivity;
 import com.test.duan.myuilibrarytest.activity.MotionActivity;
+import com.test.duan.myuilibrarytest.activity.MyViewActivity;
 import com.test.duan.myuilibrarytest.activity.ScrollDemoAcitivity;
 import com.test.duan.myuilibrarytest.activity.TestActivity;
 import com.test.duan.myuilibrarytest.activity.VoiceActivity;
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_motion_event).setOnClickListener(this);
         findViewById(R.id.btn_voice).setOnClickListener(this);
         findViewById(R.id.btn_face).setOnClickListener(this);
+        findViewById(R.id.btn_view).setOnClickListener(this);
+        findViewById(R.id.btn_miaojie).setOnClickListener(this);
 
     }
 
@@ -121,6 +125,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.btn_face:
                     intent.setClass(this, FaceActivity.class);
+                    break;
+                case R.id.btn_view:
+                    intent.setClass(this, MyViewActivity.class);
+                    break;
+                case R.id.btn_miaojie:
+                    intent.setClass(this, MiaoJieActivity.class);
                     break;
             }
             startActivity(intent);
