@@ -36,7 +36,9 @@
         <activity android:name=".activity.AnimationTestAct" />
         <activity android:name=".activity.MotionActivity" />
         <activity android:name=".activity.VoiceActivity" />
-        <activity android:name=".activity.GuaKaListActivity"></activity>
+        <activity android:name=".activity.GuaKaListActivity" />
+        <activity android:name=".activity.MyViewActivity" />
+        <activity android:name=".activity.MiaoJieActivity"></activity>
     </application>
 
 </manifest>
