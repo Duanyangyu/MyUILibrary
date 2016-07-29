@@ -122,6 +122,7 @@ public class GHCStoreListView extends ListView {
                 }
             }
     );
+
     private void changeItemHeightOnScroll() {
         View item0 = getChildAt(0);
         View item1 = getChildAt(1);
@@ -201,6 +202,7 @@ public class GHCStoreListView extends ListView {
             if (tv_phone1 != null) {
                 tv_phone1.setAlpha(alpha);
             }
+
 //            Log.d("------distanceOneItem",distanceOneItem+"");
 //            Log.d("------alpha",vg_phone_map1.getId()+"-------"+alpha+"");
             //改变遮罩的透明度
