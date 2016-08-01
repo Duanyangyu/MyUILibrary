@@ -38,7 +38,8 @@
         <activity android:name=".activity.VoiceActivity" />
         <activity android:name=".activity.GuaKaListActivity" />
         <activity android:name=".activity.MyViewActivity" />
-        <activity android:name=".activity.MiaoJieActivity"></activity>
+        <activity android:name=".activity.MiaoJieActivity" />
+        <activity android:name=".activity.MultiHeightActivity"></activity>
     </application>
 
 </manifest>

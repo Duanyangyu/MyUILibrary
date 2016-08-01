@@ -93,8 +93,6 @@ public class GuaGuaKaView extends View {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-
-
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.outWidth = width;
         options.outHeight = height;

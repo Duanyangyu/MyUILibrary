@@ -26,6 +26,7 @@ import com.test.duan.myuilibrarytest.activity.GuaKaActivity;
 import com.test.duan.myuilibrarytest.activity.GuaKaListActivity;
 import com.test.duan.myuilibrarytest.activity.MiaoJieActivity;
 import com.test.duan.myuilibrarytest.activity.MotionActivity;
+import com.test.duan.myuilibrarytest.activity.MultiHeightActivity;
 import com.test.duan.myuilibrarytest.activity.MyViewActivity;
 import com.test.duan.myuilibrarytest.activity.ScrollDemoAcitivity;
 import com.test.duan.myuilibrarytest.activity.TestActivity;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_face).setOnClickListener(this);
         findViewById(R.id.btn_view).setOnClickListener(this);
         findViewById(R.id.btn_miaojie).setOnClickListener(this);
+        findViewById(R.id.btn_multi_list_act).setOnClickListener(this);
 
     }
 
@@ -131,6 +133,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.btn_miaojie:
                     intent.setClass(this, MiaoJieActivity.class);
+                    break;
+                case R.id.btn_multi_list_act:
+                    intent.setClass(this, MultiHeightActivity.class);
                     break;
             }
             startActivity(intent);
