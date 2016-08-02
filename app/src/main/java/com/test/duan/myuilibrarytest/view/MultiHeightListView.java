@@ -1,13 +1,12 @@
 package com.test.duan.myuilibrarytest.view;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.ListView;
 import android.widget.Scroller;
 
@@ -32,9 +31,6 @@ public class MultiHeightListView extends ListView {
     private static final String TAG = "MultiHeightListView";
     private Scroller mScroller;
 
-    private boolean outBound = false;
-    private int firstOut;
-    private int distance;
 
     private static int mScrollState;
 
@@ -66,7 +62,17 @@ public class MultiHeightListView extends ListView {
         return super.dispatchTouchEvent(ev);
     }
 
-    private Rect mItemViewRect = new Rect();
+
+    private int mStartY;
+    private int mDistanceY;
+
+    public int getmStartY() {
+        return mStartY;
+    }
+
+    public int getmDistanceY() {
+        return mDistanceY;
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -80,10 +86,11 @@ public class MultiHeightListView extends ListView {
         switch (action){
 
             case MotionEvent.ACTION_DOWN:
-
+                Log.d(TAG,"action down");
 
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,"action move");
 
                 int delat = cuttentY - mLastY;
                 if (delat > 0){
@@ -94,9 +101,11 @@ public class MultiHeightListView extends ListView {
                     mScrollState = STATE_SHANGHUA;
                 }
                 mLastY = cuttentY;
-                Log.d(TAG,"action move");
+
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG,"action up");
+
 
                 break;
 
@@ -112,23 +121,16 @@ public class MultiHeightListView extends ListView {
         }
     };
 
+    private int totalY = 0;
+
     GestureDetector mGestureDetector = new GestureDetector(
             new GestureDetector.SimpleOnGestureListener(){
                 @Override
                 public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                    Log.d(TAG,"onFling()");
 
-                    int distance = 0;
-                    if (STATE_SHANGHUA == mScrollState){
-
-                        distance = firstView.getHeight() + firstView.getTop();
-                    }else if (STATE_XIALA == mScrollState){
-                        distance = firstView.getTop();
-                    }
-                    Log.d(TAG,"action up");
-                    if (firstView.getTop() != 0){
-                        mScroller.startScroll(0,0,0,distance,10000);
-                    }
+                    int firstVisiblePosition = getFirstVisiblePosition();
+                    int lastVisiblePosition = getLastVisiblePosition();
+                    Log.d(TAG,"firstVisiblePosition: "+firstVisiblePosition+",  lastVisiblePosition:"+lastVisiblePosition);
 
                     return true;
                 }
@@ -139,9 +141,24 @@ public class MultiHeightListView extends ListView {
     public void computeScroll() {
 
         if (mScroller.computeScrollOffset()){
-            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
+            scrollTo(0,mScroller.getCurrY());
             postInvalidate();
         }
 
     }
+
+
+
+    private void playAnimation(final int start, final int end){
+        final ValueAnimator animator = ValueAnimator.ofInt(start,end).setDuration(5000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float fraction = animator.getAnimatedFraction();
+                MultiHeightListView.this.scrollTo(0, (int) (start+(end*fraction)));
+            }
+        });
+        animator.start();
+    }
+
 }

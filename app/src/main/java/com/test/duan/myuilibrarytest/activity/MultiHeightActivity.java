@@ -21,6 +21,8 @@ public class MultiHeightActivity extends AppCompatActivity {
                 (MultiHeightListView) findViewById(R.id.multi_height_listview);
 
         MultiHeightAdapter adapter = new MultiHeightAdapter(this);
+        adapter.setmListView(multiHeightListView);
+
         multiHeightListView.setAdapter(adapter);
 
     }
