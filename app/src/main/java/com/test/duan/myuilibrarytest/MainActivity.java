@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.test.duan.myuilibrarytest.activity.AnimationTestAct;
+import com.test.duan.myuilibrarytest.activity.AnimationTestActivity;
 import com.test.duan.myuilibrarytest.activity.CalendarActivity;
 import com.test.duan.myuilibrarytest.activity.CircleAnimActivity;
 import com.test.duan.myuilibrarytest.activity.CircleMenuActivity;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_view).setOnClickListener(this);
         findViewById(R.id.btn_miaojie).setOnClickListener(this);
         findViewById(R.id.btn_multi_list_act).setOnClickListener(this);
+        findViewById(R.id.btn_animation_test).setOnClickListener(this);
 
     }
 
@@ -136,6 +138,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.btn_multi_list_act:
                     intent.setClass(this, MultiHeightActivity.class);
+                    break;
+                case R.id.btn_animation_test:
+                    intent.setClass(this, AnimationTestActivity.class);
                     break;
             }
             startActivity(intent);

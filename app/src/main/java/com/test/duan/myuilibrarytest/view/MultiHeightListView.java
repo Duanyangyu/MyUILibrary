@@ -1,5 +1,8 @@
 package com.test.duan.myuilibrarytest.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,8 +10,13 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AnimationSet;
 import android.widget.ListView;
 import android.widget.Scroller;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Duanyy on 2016/8/1.
@@ -90,7 +98,7 @@ public class MultiHeightListView extends ListView {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"action move");
+//                Log.d(TAG,"action move");
 
                 int delat = cuttentY - mLastY;
                 if (delat > 0){
@@ -121,16 +129,29 @@ public class MultiHeightListView extends ListView {
         }
     };
 
-    private int totalY = 0;
+    public int mTop;
 
     GestureDetector mGestureDetector = new GestureDetector(
             new GestureDetector.SimpleOnGestureListener(){
+
+
+
                 @Override
                 public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 
+
+
                     int firstVisiblePosition = getFirstVisiblePosition();
                     int lastVisiblePosition = getLastVisiblePosition();
-                    Log.d(TAG,"firstVisiblePosition: "+firstVisiblePosition+",  lastVisiblePosition:"+lastVisiblePosition);
+
+                    View firstView = getChildAt(0);
+                    if (firstView != null){
+                        mTop = firstView.getTop();
+                    }
+                    Log.d(TAG,"onFling(), firstVisiblePosition:  "+firstVisiblePosition+",   mTop: "+mTop);
+
+                    playAnimation(firstVisiblePosition,lastVisiblePosition);
+
 
                     return true;
                 }
@@ -149,8 +170,8 @@ public class MultiHeightListView extends ListView {
 
 
 
-    private void playAnimation(final int start, final int end){
-        final ValueAnimator animator = ValueAnimator.ofInt(start,end).setDuration(5000);
+    private void createAnimation(final int start, final int end){
+        final ValueAnimator animator = ValueAnimator.ofFloat(start,end).setDuration(3000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -159,6 +180,27 @@ public class MultiHeightListView extends ListView {
             }
         });
         animator.start();
+    }
+
+    private Animator createAnimation(View targetView, int startY, int endY){
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(targetView,"translationY",startY,endY);
+        return objectAnimator;
+    }
+
+    private void playAnimation(int firstPosition,int lastPosition){
+        List<Animator> list = new ArrayList<>();
+        int count = getCount();
+        for (int i = 0; i < count; i++) {
+            View view = getChildAt(i);
+            Animator animation = createAnimation(view, 0, mTop);
+            list.add(animation);
+        }
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(list);
+        animatorSet.setDuration(500);
+        animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorSet.start();
+        Log.d(TAG,"animator started");
     }
 
 }
